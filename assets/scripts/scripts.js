@@ -1,4 +1,4 @@
-
+// initialize all of the important elements
 var main = document.getElementsByTagName('main')[0]
 var viewHighscoreLink = document.getElementById('view_highscore_link')
 var timeDisplay = document.getElementById('time_display')
@@ -36,14 +36,15 @@ const questions = [
 ]
 
 // score tracking variables
-const startingTime = questions.length * 8 
-var remainingTime 
-var timer 
-var score 
+const startingTime = questions.length * 8 // the amount of time that will be given the the user to answer all of the questions in seconds
+const timePenalty = 10 // the amount of time that will be given the the user to answer all of the questions in seconds
+var remainingTime // the amount of time left on the clock
+var timer // the interval timer
+var score // the number of correct questions
 
-
+/** Set up the pages and get the quiz ready. */
 function init() {
-    
+    // Add all of the event listeners
     startQuizButton.addEventListener('click', event => {
         event.preventDefault()
         displayQuestionPage()
@@ -128,7 +129,7 @@ function displayPage(id) {
     return 4
 }
 
-
+/** Display the starting page. */
 function displayStartingPage() {
     displayPage('starting_page')
     
@@ -137,14 +138,14 @@ function displayStartingPage() {
     timeDisplay.textContent = formatSeconds(remainingTime)
 }
 
-var nextQuestionIndex 
-var randomizedQuestions 
+var nextQuestionIndex // The index of question currently being displayed to the user 
+var randomizedQuestions // A randomly sorted clone of the questions array
 
 /** Display the questions page. */
 function displayQuestionPage() {
     displayPage('question_page')
 
-    
+    // setup the question numbers
     questionNumbersBox.innerHTML = ""
 
     for (let i = 0; i < questions.length; i++) {
@@ -154,24 +155,24 @@ function displayQuestionPage() {
         questionNumbersBox.appendChild(el)
     }
 
-  
+    // create a randomly sorted clone of the questions array to use for this quiz
     randomizedQuestions = randomizeArray(questions)
 
-    
+    // reset the values to back to their defaults
     nextQuestionIndex = 0
     score = 0
 
     // start the timer
     startTimer()
 
-
+    // setup the first question
     displayNextQuestion()
 }
 
-
+/** Display the next question. */
 function displayNextQuestion() {
     if (nextQuestionIndex < questions.length) {
-        
+        // get the question and answers from the 
         const question = randomizedQuestions[nextQuestionIndex].question
         const answers = randomizedQuestions[nextQuestionIndex].answers
         const randomizedAnswers = randomizeArray(answers)
@@ -198,7 +199,7 @@ function displayNextQuestion() {
     }
 }
 
-
+/** Display the get name page. */
 function displayGetNamePage() {
     displayPage('get_name_page')
     if (remainingTime < 0) remainingTime = 0
@@ -206,7 +207,7 @@ function displayGetNamePage() {
     scoreDisplay.textContent = score
 }
 
-
+/** Display the highscore page. */
 function displayHighscorePage() {
     displayPage('highscore_page')
     questionNumbersBox.innerHTML = ""
@@ -247,7 +248,7 @@ function randomizeArray(array) {
     return output
 }
 
-
+/** Start the count down timer */
 
 function startTimer() {
     remainingTime = startingTime
@@ -277,3 +278,4 @@ function formatSeconds(seconds) {
 }
 
 init()
+
