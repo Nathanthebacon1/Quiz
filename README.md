@@ -1,6 +1,6 @@
 in this project i created a timed javascript realted quiz
 
-
+https://nathanthebacon1.github.io/Quiz/
 
 
 
