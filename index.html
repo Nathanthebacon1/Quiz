@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz</title>
+    <link rel="shortcut icon" href="./assets/images/check.svg" type="image/svg">
+
+    
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/main_layout.css">
+    <link rel="stylesheet" href="./assets/css/reset.css">
+</head>
+<body>
+    <header>
+        <a id="view_highscore_link" href="#">View Highscores</a>
+        <span id="time">Time: <span id="time_display">0</span></span>
+    </header>
+
+    <main>
+        <section id="starting_page" class="page">
+            <h1>Coding Quiz Challenge</h1>
+
+            <p>Try to answer the following Javascript-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            
+            <button id="start_quiz_button">Start Quiz</button>
+        </section>
+        
+        <div id="question_numbers_box"></div>
+
+        <section id="question_page" class="page hidden">
+
+            <h2 id="question_display"></h2>
+
+            <div id="answer_list"></div>
+
+            <hr>
+
+            <div id="feedback">Correct!</div>
+        </section>
+
+        <section id="get_name_page" class="page hidden">
+            <h2>All done!</h2>
+
+            <p>Your final score is <span id="score_display"></span>.</p>
+
+            <br>
+
+            <p>Enter initials: 
+                <input type="text" name="initials" id="initials_input">
+                <button id="submit_initials_button">Submit</button>
+            </p>
+        </section>
+
+        <section id="highscore_page" class="page hidden">
+            <h2>Highscores</h2>
+
+            <div id="highscore_list"></div>
+
+            <button id="go_to_starting_page_button">Go Back</button>
+            <button id="clear_highscores_button">Clear Highscores</button>
+        </section>
+    </main>
+
+    <script src="./assets/scripts/scripts.js"></script>
+</body>
+</html>
